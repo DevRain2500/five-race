@@ -3,7 +3,8 @@
 Proof of concept for Race Checkpoints. 
 
 Dependencies
-[fs_freemode](https://github.com/FiveM-Scripts/fs_freemode)
+
+- [fs_freemode](https://github.com/FiveM-Scripts/fs_freemode)
 
 
 
