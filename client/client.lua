@@ -36,7 +36,9 @@ CheckPoints[21] =  	{ x = -197.05, y = 1046.27, z = 232.94}
 CheckPoints[22] =  	{ x = -331.87, y = 969.99,  z = 233.69}
 CheckPoints[23] =  	{ x = -412.52, y = 908.84,  z = 236.84}
 CheckPoints[24] =  	{ x = -525.33, y = 915.24,  z = 243.37}
-CheckPoints[25] =  	{ x = -627.54, y = 995.15,  z = 240.38},
+CheckPoints[25] =  	{ x = -627.54, y = 995.15,  z = 240.38}
+CheckPoints[26] =  	{ x = 0, y = 0,  z = 0}
+CheckPoints[27] =  	{ x = 0, y = 0,  z = 0},
 
    
 
