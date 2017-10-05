@@ -113,7 +113,8 @@ RegisterNetEvent("fs_race:CP")
 AddEventHandler("fs_race:CP", function(cP, cP2)
 	if IsRacing then
 		
-		CreateCheckpoint(5, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z, 8.0, 204, 204, 1, 100, 0)
+		local checkpoint = CreateCheckpoint(5, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z, 8.0, 204, 204, 1, 100, 0)
+		local blip = AddBlipForCoord(CheckPoints[cP].x, CheckPoints[cP].y, CheckPoints[cP].z) 
 	end 
 end)
 
