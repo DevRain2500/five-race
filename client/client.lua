@@ -114,24 +114,34 @@ end)
 
 RegisterNetEvent("fs_race:CP")
 AddEventHandler("fs_race:CP", function(cP, cP2)
-	if IsRacing then
+	if IsRacing and cP2 == 27 then 
+		 
+		local finishLine = CreateCheckpoint(9, -743.62, 979.70, 238.24, 0, 0, 0, 10.0, 0, 0, 200, 100, 0)	
+			
+			Citizen.Trace("finish made!")
+			
+		else
 		
 		local checkpoint = CreateCheckpoint(5, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z, 8.0, 204, 204, 1, 100, 0)
 		local blip = AddBlipForCoord(CheckPoints[cP].x, CheckPoints[cP].y, CheckPoints[cP].z) 
 		
-		
-		
+
+
+
+
+	
 Citizen.CreateThread(function()
 	while IsRacing do 
 		Citizen.Wait(5) 
 			if GetDistanceBetweenCoords(CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, GetEntityCoords(GetPlayerPed(-1))) < 5.0 then
 				DeleteCheckpoint(checkpoint)
 					RemoveBlip(blip)
+				 
 			
-				end
 			end 
-		end)
-	end
+		end
+	end)
+end
 end)
 
 
