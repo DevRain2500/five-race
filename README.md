@@ -11,6 +11,6 @@ Dependencies
 To do list: 
 
 
-- Get waypoints to be removed after passing them
+- Make race actually end
 - Get finish line only to show up after last checkpoint has been passed 
 - Much more
