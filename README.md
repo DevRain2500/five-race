@@ -12,5 +12,7 @@ To do list:
 
 
 - Make race actually end
-- Get finish line only to show up after last checkpoint has been passed 
+- create spawnpoint for car > Make unable to enter race to prevent losing car 
+- Race countdown using scaleform
+- start race with 4 players 
 - Much more
