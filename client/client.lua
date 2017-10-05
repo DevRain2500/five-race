@@ -7,6 +7,8 @@ local blips = {
     {title="Race", colour=5, id=315, x= -711.61, y= 1000.70, z= 237.07}
 }
 
+
+local CP1check = false
 local IsRacing = false 
 local cP = 0
 local cP2 = 0
@@ -39,6 +41,7 @@ CheckPoints[24] =  	{ x = -525.33, y = 915.24,  z = 243.37}
 CheckPoints[25] =  	{ x = -627.54, y = 995.15,  z = 240.38}
 CheckPoints[26] =  	{ x = 0, y = 0,  z = 0}
 CheckPoints[27] =  	{ x = 0, y = 0,  z = 0},
+
 
    
 
@@ -85,23 +88,23 @@ AddEventHandler("fs_race:RequestCP", function(cP, cP2)
 				cP = 1
 				cP2 = 2
 				TriggerEvent("fs_race:CP", cP, cP2)  
-				Citizen.Trace("Helloo cp1 = "..cP) 
-				Citizen.Trace("Helloo cp2 = "..cP2) 
 			end 
 	end) 
 	
 Citizen.CreateThread(function()
-	while true do 
+	while IsRacing do 
 		Citizen.Wait(5) 
 			if GetDistanceBetweenCoords(CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, GetEntityCoords(GetPlayerPed(-1))) < 5.0 then
 				
 				
 				cP = math.ceil(cP+1)
 				cP2 = math.ceil(cP2+1)
-
+				
+				
 				TriggerEvent("fs_race:CP", cP, cP2)  
 				else 
-			end 	
+			end 
+			
 		end 
 	end)
 end) 
@@ -115,8 +118,23 @@ AddEventHandler("fs_race:CP", function(cP, cP2)
 		
 		local checkpoint = CreateCheckpoint(5, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z, 8.0, 204, 204, 1, 100, 0)
 		local blip = AddBlipForCoord(CheckPoints[cP].x, CheckPoints[cP].y, CheckPoints[cP].z) 
-	end 
+		
+		
+		
+Citizen.CreateThread(function()
+	while IsRacing do 
+		Citizen.Wait(5) 
+			if GetDistanceBetweenCoords(CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, GetEntityCoords(GetPlayerPed(-1))) < 5.0 then
+				DeleteCheckpoint(checkpoint)
+					RemoveBlip(blip)
+			
+				end
+			end 
+		end)
+	end
 end)
+
+
 
 
 
@@ -132,7 +150,7 @@ AddEventHandler("fs_race", function(IsRacing, CheckPoints, cP, cP2)
             SetParkedVehicleDensityMultiplierThisFrame(0.0)
 		
 
-		TriggerEvent("fs_race:RequestCP", 1, 2)
+			TriggerEvent("fs_race:RequestCP", 1, 2)
 		  
             --Finish line
             local finishLine = CreateCheckpoint(9, -743.62, 979.70, 238.24, 0, 0, 0, 10.0, 0, 0, 200, 100, 0)				
