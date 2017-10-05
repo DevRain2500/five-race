@@ -8,7 +8,6 @@ local blips = {
 }
 
 
-local CP1check = false
 local IsRacing = false 
 local cP = 0
 local cP2 = 0
@@ -40,21 +39,16 @@ CheckPoints[23] =  	{ x = -412.52, y = 908.84,  z = 236.84}
 CheckPoints[24] =  	{ x = -525.33, y = 915.24,  z = 243.37}
 CheckPoints[25] =  	{ x = -627.54, y = 995.15,  z = 240.38}
 CheckPoints[26] =  	{ x = 0, y = 0,  z = 0}
-CheckPoints[27] =  	{ x = 0, y = 0,  z = 0},
+CheckPoints[27] =  	{ x = 0, y = 0,  z = 0},  --Arrows to low to the ground? Add 1.0 or 2.0 to Z. 
 
-
-   
-
-
---Arrows to low to the ground? Add 1.0 or 2.0 to Z. 
 
 Citizen.CreateThread(function()
 	while not IsRacing do
         Citizen.Wait(0)
-        DrawMarker(1, -711.61, 1000.70, 237.07 - 1, 0, 0, 0, 0, 0, 0, 3.0001, 3.0001, 1.5001, 255, 165, 0,165, 0, 0, 0,0) 
+        	DrawMarker(1, -711.61, 1000.70, 237.07 - 1, 0, 0, 0, 0, 0, 0, 3.0001, 3.0001, 1.5001, 255, 165, 0,165, 0, 0, 0,0) 
         if GetDistanceBetweenCoords( -711.61, 1000.70, 237.07, GetEntityCoords(LocalPed())) < 50.0 then
-            Draw3DText( -711.61, 1000.70, 237.07  +.500, "Street",7,0.3,0.2)
-            Draw3DText( -711.61, 1000.70, 237.07  +.100, "Race ",7,0.3,0.2)
+            	Draw3DText( -711.61, 1000.70, 237.07  +.500, "Street",7,0.3,0.2)
+            	Draw3DText( -711.61, 1000.70, 237.07  +.100, "Race ",7,0.3,0.2)
         end
 
         if GetDistanceBetweenCoords( -711.61, 1000.70, 237.07, GetEntityCoords(LocalPed())) < 2.0 then
@@ -118,7 +112,7 @@ AddEventHandler("fs_race:CP", function(cP, cP2)
 		 
 		local finishLine = CreateCheckpoint(9, -743.62, 979.70, 238.24, 0, 0, 0, 10.0, 0, 0, 200, 100, 0)	
 			
-			Citizen.Trace("finish made!")
+		
 			
 		else
 		
@@ -162,8 +156,7 @@ AddEventHandler("fs_race", function(IsRacing, CheckPoints, cP, cP2)
 
 			TriggerEvent("fs_race:RequestCP", 1, 2)
 		  
-            --Finish line
-            local finishLine = CreateCheckpoint(9, -743.62, 979.70, 238.24, 0, 0, 0, 10.0, 0, 0, 200, 100, 0)				
+            		
         end
     end)
 	
