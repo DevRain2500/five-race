@@ -89,7 +89,7 @@ Citizen.CreateThread(function()
 	while IsRacing do 
 		Citizen.Wait(5) 
 			if GetDistanceBetweenCoords(CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, GetEntityCoords(GetPlayerPed(-1))) < 5.0 then
-				
+				PlaySoundFrontend(GetPlayerPed(-1), "RACE_PLACED", "HUD_AWARDS")
 				
 				cP = math.ceil(cP+1)
 				cP2 = math.ceil(cP2+1)
@@ -111,7 +111,7 @@ AddEventHandler("fs_race:CP", function(cP, cP2)
 	if IsRacing and cP2 == 27 then 
 		 
 		local finishLine = CreateCheckpoint(9, -743.62, 979.70, 238.24, 0, 0, 0, 10.0, 0, 0, 200, 100, 0)	
-			
+			PlaySoundFrontend(GetPlayerPed(-1), "ScreenFlash", "MissionFailedSounds")
 		
 			
 		else
