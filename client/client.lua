@@ -1,3 +1,4 @@
+reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee reeeeeeeeeeeeeeeeeeeee
 function LocalPed()
 	return GetPlayerPed(-1)
 end
